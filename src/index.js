@@ -14,11 +14,12 @@ const refs = {
 const DEBOUNCE_DELAY = 300;
 
 const clearField = () => {
-  refs.countryInfo.innerHTML = '';
   refs.countryList.innerHTML = '';
+  refs.countryInfo.innerHTML = '';
 };
-const createCountryField = country => (refs.countryInfo.innerHTML = countryCardLayout(country));
+
 const createCountryList = countries => (refs.countryList.innerHTML = countryListLayout(countries));
+const createCountryField = country => (refs.countryInfo.innerHTML = countryCardLayout(country));
 
 const search = e => {
   e.preventDefault();
