@@ -21,7 +21,7 @@ const clearField = () => {
 const createCountryList = countries => (refs.countryList.innerHTML = countryListLayout(countries));
 const createCountryField = country => (refs.countryInfo.innerHTML = countryCardLayout(country));
 
-const search = e => {
+const onInputHandler = e => {
   e.preventDefault();
   if (e.target.value) {
     fetchCountries(e.target.value.trim()).then(selectCountry).catch(fetchError);
@@ -46,4 +46,4 @@ const fetchError = () => {
   clearField();
 };
 
-refs.searchInput.addEventListener('input', debounce(search, DEBOUNCE_DELAY));
+refs.searchInput.addEventListener('input', debounce(onInputHandler, DEBOUNCE_DELAY));
