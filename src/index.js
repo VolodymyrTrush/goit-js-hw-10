@@ -36,24 +36,9 @@ const selectCountry = countries => {
     Notify.warning('Too many matches found. Please enter a more specific name.');
   } else if (countriesQuantity >= 2 && countriesQuantity <= 10) {
     createCountryList(countries);
-    createSelectedCountry();
   } else if (countriesQuantity === 1) {
     createCountryField(countries);
   }
-};
-
-const createSelectedCountry = () => {
-  const countriesList = refs.countryList.querySelectorAll('.country-title');
-  return countriesList.forEach(selectedCountry => {
-    const select = e => {
-      e.preventDefault();
-      const name = selectedCountry.textContent;
-      fetchCountries(name).then(selectCountry).catch(fetchError);
-      clearField();
-      refs.searchInput.value = '';
-    };
-    selectedCountry.addEventListener('click', select);
-  });
 };
 
 const fetchError = () => {
